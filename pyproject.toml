@@ -1,0 +1,23 @@
+[project]
+name = "example"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["numpy", "pandas"]
+
+[project.urls]
+repository = "https://github.com/vtt-scp/python-dev-env"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+
+
+# Development settings
+
+[project.optional-dependencies]
+dev = ["black", "pylint", "mypy", "pytest"]
+
+[tool.black]
+line-length = 88
+
+[tool.pylint.format]
+max-line-length = 88
