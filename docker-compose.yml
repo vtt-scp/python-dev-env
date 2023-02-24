@@ -1,0 +1,22 @@
+# Reference: https://docs.docker.com/compose/compose-file/compose-file-v3/
+
+version: "3.9"
+
+services:
+  # Each service is run in its own container
+
+  example:
+    container_name: example
+    image: example:${VERSION} # Get version number from .env file
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    # Uncomment the line below if service should be run in host network
+    # This means the service can see other services running on the host machines network
+    # network_mode: host
+
+# Pre-defined default sub-network for the services
+# to communicate with each other in.
+networks:
+  default:
+    name: example

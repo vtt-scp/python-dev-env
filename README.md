@@ -24,13 +24,16 @@ Python development environment setup and guidelines.
   - [`.gitignore`](#gitignore)
   - [`.env`](#env)
   - [`README.md`](#readmemd)
+  - [`Makefile` (Only works readily on Linux)](#makefile-only-works-readily-on-linux)
+- [Containers](#containers)
+  - [Dockerfile](#dockerfile)
+  - [docker-compose.yml](#docker-composeyml)
 
 
 # Software requirements
 - [Python](https://www.python.org/downloads/)
 - Container engine
   - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
-  - [Podman for Windows](https://podman-desktop.io/)
 - Optional
   - [Visual Studio Code](https://code.visualstudio.com/download)
 
@@ -85,7 +88,7 @@ Create a new Python virtual environment at desired location, for example:
 ```
 python3.11 -m venv .venv
 ```
-To activate the environment run the activation script
+To activate the environment run the activation script on:  
 Ubuntu:
 ```
 source .venv/bin/activate
@@ -150,7 +153,7 @@ Use `.vscode/settings.json` or `File` > `Preferences` > `Settings` > `Workspace`
 With the remote development extensions (`Remote - SSH` or `Dev Containers`) VSCode can connect to another computer over SSH or to a running container. The development environment is then fully contained on the remote machine or container. More info [here](https://code.visualstudio.com/docs/remote/remote-overview).
 
 ## Debugger
-Run a Python file with a debugger by pressing `F5` with a Python file active in the editor. VS Code automatically loads environment variables from `.env` file when running scripts via the debugger. More info [here](https://code.visualstudio.com/docs/editor/debugging).
+Debugging configuration can be found in `.vscode/launch.json`. Run the specified debugging configuration by pressing `F5`. As configured, VS Code automatically loads environment variables from `.env` file when running via the debugger. More info [here](https://code.visualstudio.com/docs/editor/debugging).
 
 
 # Other
@@ -159,6 +162,32 @@ Run a Python file with a debugger by pressing `F5` with a Python file active in 
 Add file and folder names to `.gitignore` file that should not be included in git version management. The contents of the [.gitignore](.gitignore) found in this project is copied from [here](https://github.com/github/gitignore/blob/main/Python.gitignore). The `.gitignore` should be appended as necessary.
 
 ## `.env`
-Add secrets and other platform configuration information here such as usernames, passwords, addresses to other services, etc. The `.env` file is automatically found and read by some debuggers and services. The defined variables can also be used in the `docker-compose.yml` file.
+Add secrets and other platform configuration information here such as usernames, passwords, addresses to other services, etc. The `.env` file is automatically found and read by some debuggers and services. The defined variables can also be used in the `docker-compose.yml` file.  
+The `.env` is generally left out from source management such as git by including it to `.gitignore`. However, it is included in this example project.
 
 ## `README.md`
+
+## `Makefile` (Only works readily on Linux)
+Makefile is a convenient place to store commands and scripts to manage, build, or run the project and its applications. An example for some useful commands can be seen in `Makefile`.
+```
+make <target_name>
+```
+
+# Containers
+Tools such as Docker are used to run applications in containers that include everything required, from OS to code dependencies, to execute the application.
+
+## Dockerfile
+Dockerfile is a set of instructions for creating a image of the project including all necessary dependencies. Build a dockerfile of this project:
+```
+docker build .
+```
+
+## docker-compose.yml
+Docker compose file includes instructions on running multiple services in containers with simple `up`, `down` and `build` commands. Build and run the defined services with:
+```
+docker compose up --build
+```
+Stop containers with:
+```
+docker compose down
+```
