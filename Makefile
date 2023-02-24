@@ -1,6 +1,9 @@
 # Reference: https://www.gnu.org/software/make/manual/make.html
 SHELL=/bin/bash
 
+# Ensure requirements is always done when called (otherwise make may consider it "up to date")
+.PHONY: requirements
+
 # Generate requirements files (run in .venv)
 requirements:
 	pip-compile --generate-hashes --resolver backtracking -o requirements/prod.txt pyproject.toml
