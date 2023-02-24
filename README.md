@@ -112,13 +112,13 @@ pip install pip-tools
 
 ### pip-compile
 Compiling new requirements files is required when dependencies are updated in `pyproject.toml`.  
-Compile a production requirements file, e.g. to `requirements.txt`:
+Compile a production requirements file, e.g. to `requirements/prod.txt`:
 ```
-pip-compile --generate-hashes --resolver backtracking --output-file requirements.txt
+pip-compile --generate-hashes --resolver backtracking --output-file requirements/prod.txt
 ```
-Compile a development requirements file, e.g. to `dev-requirements.txt`:
+Compile a development requirements file, e.g. to `requirements/dev.txt`:
 ```
-pip-compile --generate-hashes --resolver backtracking --extra dev --output-file dev-requirements.txt
+pip-compile --generate-hashes --resolver backtracking --extra dev --output-file requirements/dev.txt
 ```
 
 ### pip-sync
