@@ -18,7 +18,7 @@ build:
 	docker compose build
 
 # Run services in docker-compose.yml
-run:
+up:
 	docker compose up
 
 # Stop services in docker-compose.yml

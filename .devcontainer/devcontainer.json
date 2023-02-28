@@ -1,21 +1,15 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
 {
-	"name": "Example",
+	"name": "Python example",
 
 	// Dockerfile config:
-	//"build": {
-	//	// Sets the run context to one level up instead of the .devcontainer folder.
-	//	"context": "..",
-	//	// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
-	//	"dockerfile": "./Dockerfile"
-	//},
-
-	//Docker compose config:
-	"dockerComposeFile": ["../docker-compose.yml", "docker-compose.dev.yml"],
-	"service": "example-dev",
-	"workspaceFolder": "/workspace",
-	"shutdownAction": "stopCompose",
+	"build": {
+		// Sets the run context to one level up instead of the .devcontainer folder.
+		"context": "..",
+		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+		"dockerfile": "./Dockerfile"
+	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -39,8 +33,7 @@
 				"ms-python.python",
 				"ms-python.isort",
 				"bungcip.better-toml",
-				"yzhang.markdown-all-in-one",       
-				"intel-corporation.oneapi-environment-configurator"
+				"yzhang.markdown-all-in-one"
 			]
 		}
 	}
